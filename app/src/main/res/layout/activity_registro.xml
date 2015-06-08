@@ -1,0 +1,138 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="cl.crevent.crevent.RegistroActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:background="@color/primary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/usuario"
+            android:hint="Usuario"
+            android:textColor="#ff000000"
+            android:textColorHint="#ff000000"
+            android:layout_below="@+id/toolbar"
+            android:layout_alignLeft="@+id/registro"
+            android:layout_alignStart="@+id/registro"
+            android:layout_marginTop="52dp" />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="115dp">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/password"
+            android:hint="password"
+            android:textColorHint="#ff000000"
+            android:textColor="#ff000000"
+            android:password="true"
+            android:singleLine="false"
+            android:fontFamily="@string/hello_world" />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="170dp">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/password2"
+            android:hint="repita password"
+            android:textColorHint="#ff000000"
+            android:textColor="#ff000000"
+            android:password="true"
+            android:layout_below="@+id/password"
+            android:layout_alignLeft="@+id/password"
+            android:layout_alignStart="@+id/password"
+            android:fontFamily="@string/hello_world" />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="225dp">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/correo"
+            android:hint="Correo"
+            android:textColor="#ff000000"
+            android:textColorHint="#ff000000"
+            android:layout_below="@+id/password2"
+            android:layout_alignLeft="@+id/password2"
+            android:layout_alignStart="@+id/password2"
+            android:inputType="textEmailAddress" />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="280dp"
+        android:id="@+id/view">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/telefono"
+            android:hint="Telefono (+56912345678)"
+            android:textColorHint="#ff000000"
+            android:textColor="#ff000000"
+            android:layout_below="@+id/correo"
+            android:layout_alignLeft="@+id/correo"
+            android:layout_alignStart="@+id/correo"
+            android:inputType="phone" />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="335dp">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/comuna"
+            android:hint="Comuna"
+            android:textColorHint="#ff000000"
+            android:textColor="#ff000000"
+            android:layout_below="@+id/telefono"
+            android:layout_alignLeft="@+id/telefono"
+            android:layout_alignStart="@+id/telefono" />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Registrar"
+        android:id="@+id/registro"
+        android:onClick="Registrar"
+        android:layout_below="@+id/view"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="55dp" />
+
+</RelativeLayout>

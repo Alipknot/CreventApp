@@ -1,0 +1,97 @@
+<android.support.v4.widget.DrawerLayout
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/primary" />
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp">
+
+            EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/etUser"
+                android:layout_marginTop="34dp"
+                android:hint="Usuario"
+                android:layout_below="@+id/toolbar"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp">
+
+            EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:ems="10"
+                android:id="@+id/etPassword"
+                android:hint="Password"
+                android:layout_above="@+id/cbNocerrar"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="43dp" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="No cerrar Sesion"
+            android:id="@+id/cbNocerrar"
+            android:checked="false"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Gps"
+            android:id="@+id/BtGps"
+            android:onClick="Login"
+            android:layout_below="@+id/cbNocerrar"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ver mas"
+            android:id="@+id/BtVerMas"
+            android:layout_below="@+id/BtGps"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+
+    </LinearLayout>
+
+    <android.support.design.widget.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        app:headerLayout="@layout/drawer_header"
+        app:background="@color/primary"
+        app:menu="@menu/drawer"
+        android:background="@color/primary" />
+
+</android.support.v4.widget.DrawerLayout>

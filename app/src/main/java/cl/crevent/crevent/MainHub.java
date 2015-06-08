@@ -14,7 +14,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.Random;
 
 
 public class MainHub extends AppCompatActivity {
@@ -24,12 +27,24 @@ public class MainHub extends AppCompatActivity {
     private Toolbar toolbar;//declaracion de toolbar barra superior
 
     Button btgps, btsemore; //declaracion botones
+    TextView textView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_hub);
         btgps = (Button) findViewById(R.id.BtGps);
         btsemore = (Button) findViewById(R.id.BtVerMas);
+        textView = (TextView) findViewById(R.id.tx_random);
+        try {
+            Random randomGenerator = new Random();
+            int i = randomGenerator.nextInt(5);
+            String f = String.valueOf(i);
+            textView.setText(f);
+        }catch(Exception e) {
+        Toast.makeText(MainHub.this, e.getMessage().toString(), Toast.LENGTH_SHORT).show();
+
+        }
+
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);////instanciar toolbar
         if (toolbar != null) {//ver si no es nula

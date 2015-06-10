@@ -50,14 +50,20 @@
         <activity
             android:name=".MapsActivity"
             android:label="@string/title_activity_maps"
-            android:theme="@style/Theme.AppCompat.Dialog"
             android:noHistory="true"
+            android:parentActivityName=".MainHub"
+            android:theme="@style/Theme.AppCompat.Dialog" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="cl.crevent.crevent.MainHub" />
+        </activity>
+        <activity
+            android:name=".Busqueda"
+            android:label="@string/title_activity_busqueda"
             android:parentActivityName=".MainHub" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="cl.crevent.crevent.MainHub"
-
-                />
+                android:value="cl.crevent.crevent.MainHub" />
         </activity>
     </application>
 

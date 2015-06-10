@@ -1,7 +1,10 @@
 package cl.crevent.crevent;
 
+import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.os.AsyncTask;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -10,42 +13,50 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ListAdapter;
+import android.widget.ListView;
+import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Random;
 
 
 public class MainHub extends AppCompatActivity {
-
+    private ProgressDialog pDialog;
     private DrawerLayout mDrawerLayout; //declaracion de Layout para contener el menu
     private ActionBarDrawerToggle drawerToggle; //accion q permite esconder el menu
     private Toolbar toolbar;//declaracion de toolbar barra superior
 
     Button btgps, btsemore; //declaracion botones
-    TextView textView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_hub);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("Inicio");
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         btgps = (Button) findViewById(R.id.BtGps);
         btsemore = (Button) findViewById(R.id.BtVerMas);
-        textView = (TextView) findViewById(R.id.tx_random);
-        try {
-            Random randomGenerator = new Random();
-            int i = randomGenerator.nextInt(5);
-            String f = String.valueOf(i);
-            textView.setText(f);
-        }catch(Exception e) {
-        Toast.makeText(MainHub.this, e.getMessage().toString(), Toast.LENGTH_SHORT).show();
-
-        }
-
-
         toolbar = (Toolbar) findViewById(R.id.toolbar);////instanciar toolbar
         if (toolbar != null) {//ver si no es nula
             setSupportActionBar(toolbar);//utilizar toolbar como barra principal
@@ -71,6 +82,16 @@ public class MainHub extends AppCompatActivity {
 
             }
         });
+
+        btsemore.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), Busqueda.class);
+                startActivity(intent);
+            }
+        });
+     //   contactList = new ArrayList<HashMap<String, String>>();
+
 
     }
 
@@ -140,4 +161,6 @@ public class MainHub extends AppCompatActivity {
     }
 
 
+
 }
+

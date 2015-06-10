@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="10dp"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp" >
+
+    <!-- Name Label -->
+
+    <!-- Email label -->
+
+    <!-- Mobile number label -->
+    <ImageView
+        android:id="@+id/img_empre"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:text="Mobile: "
+        android:textColor="#5d5d5d"
+        android:textStyle="bold"
+  />
+
+    <TextView
+        android:id="@+id/tx_nom"
+       android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/img_empre"/>
+
+    <TextView
+        android:id="@+id/tx_dir"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tx_nom"/>
+
+
+</RelativeLayout>

@@ -4,7 +4,7 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Buscar</string>
     <string name="navigation_sub_item_1">Inicio</string>
-    <string name="navigation_sub_item_2">Perfil</string>
+    <string name="navigation_sub_item_2">Cerrar Sesi\u00F3n</string>
     <string name="navigation_subheader">Crevent</string>
     <string name="open_drawer">Open</string>
     <string name="close_drawer">Close</string>

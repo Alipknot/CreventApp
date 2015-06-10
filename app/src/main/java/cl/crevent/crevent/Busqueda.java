@@ -128,13 +128,13 @@ public class Busqueda extends AppCompatActivity {
             httpHandler sh = new httpHandler(getApplicationContext());
 
             // Making a request to url and getting response
-            String url="http://192.168.2.2/CreApp/CargarPerfil.php?comuna=";
+            String url="http://crevent.cu.cc/CreApp/CargarPerfil.php?comuna=";
             String query;
             try {
                 query = URLEncoder.encode(comuna, "UTF-8");
             }catch (UnsupportedEncodingException e) {
 
-                query = "*";
+                query = "";
             };
 
             String cat;
@@ -142,7 +142,7 @@ public class Busqueda extends AppCompatActivity {
                 cat = URLEncoder.encode(categoria, "UTF-8");
             }catch (UnsupportedEncodingException e) {
 
-              cat= "*";
+              cat= "";
             };
             url= url+query+"&categoria="+cat;
             Log.d("Url: >", url);

@@ -26,6 +26,7 @@ public class RegistroActivity extends ActionBarActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("Registrarse");
 
         etUsuario = (EditText)findViewById(R.id.usuario);
         etPassword = (EditText)findViewById(R.id.password);
@@ -78,7 +79,7 @@ public class RegistroActivity extends ActionBarActivity {
                     StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
                     StrictMode.setThreadPolicy(policy);
                     httpHandler sh = new httpHandler(getApplicationContext());
-                    String registro =sh.get("http://192.168.2.2/CreApp/Registro.php?user="+usuario+"&password="+password+"&correo="+correo+"&telefono="+telefono+"&comuna="+comuna);
+                    String registro =sh.get("http://crevent.cu.cc/CreApp/Registro.php?user="+usuario+"&password="+password+"&correo="+correo+"&telefono="+telefono+"&comuna="+comuna);
 
                     switch (registro) {
                         case "Usuario registrado":
@@ -87,13 +88,13 @@ public class RegistroActivity extends ActionBarActivity {
                             startActivity(i);
                             break;
                         case "Usuario no registrado":
-                            Toast.makeText(this, "Usuario no registrado, por favor inttelo nuevamente", Toast.LENGTH_LONG).show();
+                            Toast.makeText(this, "Usuario no registrado, por favor int\u00E9ntelo nuevamente", Toast.LENGTH_LONG).show();
                             break;
                         case "Usuario ya existe":
-                            Toast.makeText(this, "El usuario que est? intentando de registrar ya existe.", Toast.LENGTH_LONG).show();
+                            Toast.makeText(this, "El usuario ya esta registrado.", Toast.LENGTH_LONG).show();
                             break;
                         case "Telefono ya existe":
-                            Toast.makeText(this, "El teléfono que est? intentando de registrar ya existe.", Toast.LENGTH_LONG).show();
+                            Toast.makeText(this, "El tel\u00E9fono ya esta registrado.", Toast.LENGTH_LONG).show();
                             break;
                         default:
                             Toast.makeText(this, "Error", Toast.LENGTH_LONG).show();
@@ -102,7 +103,7 @@ public class RegistroActivity extends ActionBarActivity {
                     Toast.makeText(this, "" + e, Toast.LENGTH_LONG).show();
                 }
             }else{
-                Toast.makeText(this, "Las contraseñas no coinciden.", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "Las contrase\u00D1s no coinciden.", Toast.LENGTH_LONG).show();
             }
         }
     }

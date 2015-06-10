@@ -3,6 +3,7 @@ package cl.crevent.crevent;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.AsyncTask;
 import android.support.design.widget.NavigationView;
@@ -94,7 +95,12 @@ public class MainHub extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "Menu 1", Toast.LENGTH_LONG).show();
                         break;
                     case R.id.navigation_sub_item_2:
-                        Toast.makeText(getApplicationContext(), "Menu 2", Toast.LENGTH_LONG).show();
+                        SharedPreferences preferences = getSharedPreferences("Preferencia_usuario", Context.MODE_PRIVATE);
+                        SharedPreferences.Editor editor = preferences.edit();
+                        editor.clear();
+                        editor.apply();
+                        startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                        Toast.makeText(getApplicationContext(), "sesi\u00F3n cerrada", Toast.LENGTH_LONG).show();
                         break;
                     default:
                         return true;
@@ -104,7 +110,10 @@ public class MainHub extends AppCompatActivity {
             }
         });
     }
-
+    @Override
+    public void onBackPressed() {
+        // do nothing.
+    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.

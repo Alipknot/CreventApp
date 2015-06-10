@@ -100,6 +100,10 @@ public class MainActivity extends AppCompatActivity {
         super.onConfigurationChanged(newConfig);
 
     }
+    @Override
+    public void onBackPressed() {
+        // do nothing.
+    }
     public void consultaSesion(){//metodo ve si la sesion esta iniciada
 
         SharedPreferences preferences = getSharedPreferences("Preferencia_usuario", Context.MODE_PRIVATE);
@@ -129,7 +133,7 @@ public class MainActivity extends AppCompatActivity {
          }else{
              try {
                  httpHandler sh = new httpHandler(getApplicationContext());
-                 String login= sh.get("http://192.168.2.2/CreApp/Login.php?user=" + usuario + "&password=" + password);
+                 String login= sh.get("http://crevent.cu.cc/CreApp/Login.php?user=" + usuario + "&password=" + password);
 
 
 

@@ -4,6 +4,7 @@
     android:layout_height="match_parent"
     tools:context="cl.crevent.crevent.RegistroActivity">
 
+
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
         android:background="@color/primary"
@@ -13,19 +14,19 @@
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp">
+        android:layout_marginTop="60dp"
+        android:id="@+id/view2">
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/usuario"
             android:hint="Usuario"
-            android:textColor="#ff000000"
-            android:textColorHint="#ff000000"
             android:layout_below="@+id/toolbar"
             android:layout_alignLeft="@+id/registro"
             android:layout_alignStart="@+id/registro"
-            android:layout_marginTop="52dp" />
+            android:layout_marginTop="52dp"
+            android:maxLength="30"/>
 
     </android.support.design.widget.TextInputLayout>
 
@@ -39,11 +40,11 @@
             android:layout_height="wrap_content"
             android:id="@+id/password"
             android:hint="password"
-            android:textColorHint="#ff000000"
-            android:textColor="#ff000000"
             android:password="true"
             android:singleLine="false"
-            android:fontFamily="@string/hello_world" />
+            android:fontFamily="@string/hello_world"
+
+            android:maxLength="30"/>
 
     </android.support.design.widget.TextInputLayout>
 
@@ -57,13 +58,12 @@
             android:layout_height="wrap_content"
             android:id="@+id/password2"
             android:hint="repita password"
-            android:textColorHint="#ff000000"
-            android:textColor="#ff000000"
             android:password="true"
             android:layout_below="@+id/password"
             android:layout_alignLeft="@+id/password"
             android:layout_alignStart="@+id/password"
-            android:fontFamily="@string/hello_world" />
+            android:fontFamily="@string/hello_world"
+            android:maxLength="30"/>
 
     </android.support.design.widget.TextInputLayout>
 
@@ -77,8 +77,6 @@
             android:layout_height="wrap_content"
             android:id="@+id/correo"
             android:hint="Correo"
-            android:textColor="#ff000000"
-            android:textColorHint="#ff000000"
             android:layout_below="@+id/password2"
             android:layout_alignLeft="@+id/password2"
             android:layout_alignStart="@+id/password2"
@@ -97,11 +95,10 @@
             android:layout_height="wrap_content"
             android:id="@+id/telefono"
             android:hint="Telefono (+56912345678)"
-            android:textColorHint="#ff000000"
-            android:textColor="#ff000000"
             android:layout_below="@+id/correo"
             android:layout_alignLeft="@+id/correo"
             android:layout_alignStart="@+id/correo"
+            android:maxLength="12"
             android:inputType="phone" />
 
     </android.support.design.widget.TextInputLayout>
@@ -116,11 +113,12 @@
             android:layout_height="wrap_content"
             android:id="@+id/comuna"
             android:hint="Comuna"
-            android:textColorHint="#ff000000"
-            android:textColor="#ff000000"
             android:layout_below="@+id/telefono"
             android:layout_alignLeft="@+id/telefono"
-            android:layout_alignStart="@+id/telefono" />
+            android:layout_alignStart="@+id/telefono"
+            android:maxLength="50"
+
+            />
 
     </android.support.design.widget.TextInputLayout>
 
@@ -134,5 +132,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginTop="55dp" />
+
+
 
 </RelativeLayout>

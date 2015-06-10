@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.AsyncTask;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
@@ -42,21 +43,19 @@ public class MainHub extends AppCompatActivity {
     private ActionBarDrawerToggle drawerToggle; //accion q permite esconder el menu
     private Toolbar toolbar;//declaracion de toolbar barra superior
 
-    Button btgps, btsemore; //declaracion botones
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_hub);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+      toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Inicio");
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        btgps = (Button) findViewById(R.id.BtGps);
-        btsemore = (Button) findViewById(R.id.BtVerMas);
         toolbar = (Toolbar) findViewById(R.id.toolbar);////instanciar toolbar
         if (toolbar != null) {//ver si no es nula
             setSupportActionBar(toolbar);//utilizar toolbar como barra principal
@@ -72,27 +71,17 @@ public class MainHub extends AppCompatActivity {
             setupDrawerContent(navigationView);//metodo para crear el menu
         }
 
-        btgps.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), MapsActivity.class);
-                intent.putExtra("Localizacion", "-36.780099, -73.076080");
-                intent.putExtra("Empresa", "Carloventos");
-                startActivity(intent);
 
-            }
-        });
-
-        btsemore.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), Busqueda.class);
-                startActivity(intent);
-            }
-        });
      //   contactList = new ArrayList<HashMap<String, String>>();
 
 
+    }
+
+    private void ShowSearchDialog(){
+
+        FragmentManager fm = getSupportFragmentManager();
+        SearchDialog sec = new SearchDialog();
+        sec.show(fm, "Dialogo busqueda");
     }
 
     public void setupDrawerContent(NavigationView navigationView){//metodo de botones de menu
@@ -132,6 +121,7 @@ public class MainHub extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            ShowSearchDialog();
             return true;
         }
 

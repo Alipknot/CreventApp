@@ -2,6 +2,7 @@ package cl.crevent.crevent;
 
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
+import android.os.Parcelable;
 import android.support.v4.app.NavUtils;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
@@ -37,7 +38,8 @@ public class Busqueda extends AppCompatActivity {
     private static final String TAG_PHONE = "empresa_cel";
     private static final String TAG_DIR = "empresa_dir";
     private static final String TAG_CLI = "cliente_name";
-
+    private String comuna;
+    private String categoria;
     ListView listView;
 
     // contacts JSONArray
@@ -49,19 +51,35 @@ public class Busqueda extends AppCompatActivity {
     List<String> imga = new ArrayList<String>();
     List<String> namae = new ArrayList<String>();
     List<String> dire = new ArrayList<String>();
+    List<String> local = new ArrayList<String>();
+    Parcelable state;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_busqueda);
 
+        comuna = getIntent().getStringExtra("Comuna");
+        categoria = getIntent().getStringExtra("Categoria");
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
         listView = (ListView) findViewById(R.id.ls_result);
-        new GetResults().execute();
+             new GetResults().execute();
+
+
     }
+
+
+
+ /**   @Override
+    protected void onStop() {
+         Log.d("status", "saving listview state @ onPause");
+
+         state = listView.onSaveInstanceState();
+        super.onStop();
+    }*/
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -113,12 +131,20 @@ public class Busqueda extends AppCompatActivity {
             String url="http://192.168.2.2/CreApp/CargarPerfil.php?comuna=";
             String query;
             try {
-                query = URLEncoder.encode("Concepcion", "UTF-8");
+                query = URLEncoder.encode(comuna, "UTF-8");
             }catch (UnsupportedEncodingException e) {
 
                 query = "*";
             };
-            url= url+query;
+
+            String cat;
+            try {
+                cat = URLEncoder.encode(categoria, "UTF-8");
+            }catch (UnsupportedEncodingException e) {
+
+              cat= "*";
+            };
+            url= url+query+"&categoria="+cat;
             Log.d("Url: >", url);
             String jsonStr = sh.get(url);
 
@@ -138,7 +164,18 @@ public class Busqueda extends AppCompatActivity {
                     runOnUiThread(new Runnable(){
 
                         public void run() {
-                            Toast.makeText(getApplicationContext(), "Por favor compruebe su conexi?n a internet",
+                            Toast.makeText(getApplicationContext(), "Por favor compruebe su conexi\\u00f3n a internet",
+                                    Toast.LENGTH_SHORT).show();
+
+                        }
+                    });
+                    break;
+
+                case "NOSET":
+                    runOnUiThread(new Runnable(){
+
+                        public void run() {
+                            Toast.makeText(getApplicationContext(), "No se encuentras resultados, por favor intente mas tarde",
                                     Toast.LENGTH_SHORT).show();
 
                         }
@@ -167,6 +204,7 @@ public class Busqueda extends AppCompatActivity {
                                 imga.add(img);
                                 namae.add(name);
                                 dire.add(address);
+                                local.add(loc);
 /**
  // tmp hashmap for single contact
  HashMap<String, String> contact = new HashMap<String, String>();
@@ -189,7 +227,7 @@ public class Busqueda extends AppCompatActivity {
                     }
                     break;
             }
-            Adp = new ListViewCustomAdapter(Busqueda.this, namae.toArray(new String[namae.size()]),dire.toArray(new String[dire.size()]),imga.toArray(new String[imga.size()]) );
+            Adp = new ListViewCustomAdapter(Busqueda.this, namae.toArray(new String[namae.size()]),dire.toArray(new String[dire.size()]),imga.toArray(new String[imga.size()]), local.toArray(new String[local.size()]) );
             return null;
         }
 
@@ -205,6 +243,7 @@ public class Busqueda extends AppCompatActivity {
             Log.d("Array img", "arr: " + imga.toString());
             Log.d("Array dire", "arr: " + dire.toString());
             Log.d("Array nombres", "arr: " + namae.toString());
+            Log.d("Array loc", "arr:" + local.toString());
 
 
 /**

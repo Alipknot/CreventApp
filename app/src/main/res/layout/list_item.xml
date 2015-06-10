@@ -32,6 +32,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/tx_nom"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/bt_gp"
+        android:text="@string/boton_gp"
+        android:layout_below="@id/tx_dir"
+        />
 
 
 </RelativeLayout>

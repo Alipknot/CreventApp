@@ -16,4 +16,21 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_maps">Mapa</string>
     <string name="title_activity_busqueda">Busqueda</string>
+    <string name="boton_gp">Ver en mapa</string>
+    <string-array name="cats_array">
+        <item>Categorias</item>
+        <item>Organizadora de eventos</item>
+        <item>Banqueteria</item>
+        <item>Centro de eventos</item>
+        <item>Fotografia</item>
+    </string-array>
+
+    <string-array name="com_array">
+        <item>Comunas</item>
+        <item>Concepcion</item>
+        <item>Hualpen</item>
+        <item>Talcahuano</item>
+        <item>Lota</item>
+    </string-array>
+
 </resources>
